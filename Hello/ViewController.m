@@ -14,6 +14,8 @@
 
 @implementation ViewController
 
+@synthesize dogeView;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -26,4 +28,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)swipeAction:(id)sender {
+    dogeView.transform = CGAffineTransformRotate(dogeView.transform, M_PI_2);
+}
 @end

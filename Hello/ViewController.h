@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+- (IBAction)swipeAction:(id)sender;
+@property (strong, nonatomic) IBOutlet UIImageView *dogeView;
+
 
 @end
