@@ -22,13 +22,10 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s2g-aW-dup">
-                                <rect key="frame" x="0.0" y="0.0" width="97" height="97"/>
+                                <rect key="frame" x="-220" y="-220" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="KXZ-Fu-buk" appends="YES" id="ppm-AN-3fH"/>
-                                </connections>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pjs-Hx-lDp">
                                 <rect key="frame" x="94" y="344" width="132" height="56"/>
@@ -48,16 +45,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="cornerView" destination="s2g-aW-dup" id="aNT-x9-VYh"/>
                         <outlet property="dogeView" destination="fzY-8J-pIZ" id="Ccj-UY-3Bs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="KXZ-Fu-buk">
-                    <connections>
-                        <action selector="swipeAction:" destination="vXZ-lx-hvc" id="xoh-Op-hNf"/>
-                        <outlet property="delegate" destination="fzY-8J-pIZ" id="Rdo-vt-LcE"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5" y="46"/>
         </scene>

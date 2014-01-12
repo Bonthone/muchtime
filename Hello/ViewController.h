@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-- (IBAction)swipeAction:(id)sender;
+
+- (void)handlePanFrom:(UIPanGestureRecognizer*)recognizer;
+
 @property (strong, nonatomic) IBOutlet UIImageView *dogeView;
+@property (strong, nonatomic) IBOutlet UIView *cornerView;
 
 
 @end
