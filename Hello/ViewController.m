@@ -14,6 +14,7 @@
 
 @implementation ViewController
 
+@synthesize bgView;
 @synthesize dogeView;
 @synthesize cornerView;
 
@@ -60,6 +61,7 @@
             options:UIViewAnimationOptionCurveEaseOut
             animations:^ {
                 cornerView.alpha = 0.5;
+                // bgView.backgroundColor = cornerView.backgroundColor;
             }
             completion:NULL];
     }

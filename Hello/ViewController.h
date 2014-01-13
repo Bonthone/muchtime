@@ -12,6 +12,7 @@
 
 - (void)handlePanFrom:(UIPanGestureRecognizer*)recognizer;
 
+@property (strong, nonatomic) IBOutlet UIView *bgView;
 @property (strong, nonatomic) IBOutlet UIImageView *dogeView;
 @property (strong, nonatomic) IBOutlet UIView *cornerView;
 
