@@ -24,8 +24,6 @@
 	// Do any additional setup after loading the view, typically from a nib.
     UIPanGestureRecognizer* panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
     [_cornerView addGestureRecognizer:panGestureRecognizer];
-    //[panGestureRecognizer release];
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,11 +46,20 @@
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         [self rotateDoge:M_PI_4];
 
-    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-        [UIView animateWithDuration:2.0 delay:0
-            options:UIViewAnimationOptionCurveEaseOut
+        [UIView animateWithDuration:0 delay:0
+            options:UIViewAnimationOptionCurveLinear
             animations:^ {
                 _cornerView.transform = CGAffineTransformTranslate(_cornerView.transform, translation.x, translation.y);
+            }
+            completion:NULL];
+
+        [recognizer setTranslation:CGPointZero inView:recognizer.view];
+
+    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        [UIView animateWithDuration:0.5 delay:0
+            options:UIViewAnimationOptionCurveEaseOut
+            animations:^ {
+                _cornerView.alpha = 0.5 ;
             }
             completion:NULL];
     }
