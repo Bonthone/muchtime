@@ -15,7 +15,7 @@
 @implementation ViewController
 
 @synthesize dogeView;
-
+@synthesize cornerView;
 
 
 - (void)viewDidLoad
@@ -23,7 +23,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     UIPanGestureRecognizer* panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
-    [_cornerView addGestureRecognizer:panGestureRecognizer];
+    [cornerView addGestureRecognizer:panGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,7 +49,7 @@
         [UIView animateWithDuration:0 delay:0
             options:UIViewAnimationOptionCurveLinear
             animations:^ {
-                _cornerView.transform = CGAffineTransformTranslate(_cornerView.transform, translation.x, translation.y);
+                cornerView.transform = CGAffineTransformTranslate(cornerView.transform, translation.x, translation.y);
             }
             completion:NULL];
 
@@ -59,7 +59,7 @@
         [UIView animateWithDuration:0.5 delay:0
             options:UIViewAnimationOptionCurveEaseOut
             animations:^ {
-                _cornerView.alpha = 0.5 ;
+                cornerView.alpha = 0.5;
             }
             completion:NULL];
     }
