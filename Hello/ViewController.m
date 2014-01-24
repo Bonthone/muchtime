@@ -37,6 +37,18 @@
     dogeView.transform = CGAffineTransformRotate(dogeView.transform, radians);
 }
 
+CGPoint calcMovement(tx, ty) {
+
+    int larger = abs(tx) > abs(ty) ? tx : ty;
+
+    int movement = larger * 1.5;
+
+    CGPoint direction = CGPointMake(1, 1);
+
+    return CGPointMake(movement * direction.x,
+                       movement * direction.y);
+}
+
 
 - (void)handlePanFrom:(UIPanGestureRecognizer*)recognizer {
 
@@ -45,12 +57,16 @@
 
     if (recognizer.state == UIGestureRecognizerStateBegan) {
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
-        [self rotateDoge:M_PI_4];
+
+        CGPoint movement = calcMovement(translation.x, translation.y);
+
+        [self rotateDoge:M_PI * movement.x  / 200.0];
+
 
         [UIView animateWithDuration:0 delay:0
             options:UIViewAnimationOptionCurveLinear
             animations:^ {
-                cornerView.transform = CGAffineTransformTranslate(cornerView.transform, translation.x, translation.y);
+                cornerView.transform = CGAffineTransformTranslate(cornerView.transform, movement.x, movement.y);
             }
             completion:NULL];
 
