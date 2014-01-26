@@ -10,4 +10,12 @@
 
 @implementation CornerView
 
+@synthesize color;
+
+- (void)awakeFromNib {
+	// Initialization code
+	self.backgroundColor = color;
+
+}
+
 @end

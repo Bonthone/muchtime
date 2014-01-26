@@ -10,4 +10,6 @@
 
 @interface CornerView : UIView
 
+@property (assign) UIColor *color;
+
 @end
