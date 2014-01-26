@@ -21,6 +21,7 @@
 		3847ABED187C5EA500593C09 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3847ABCF187C5EA500593C09 /* UIKit.framework */; };
 		3847ABF5187C5EA500593C09 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3847ABF3187C5EA500593C09 /* InfoPlist.strings */; };
 		3847ABF7187C5EA500593C09 /* HelloTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3847ABF6187C5EA500593C09 /* HelloTests.m */; };
+		38914E1618951D7100D2EBC9 /* CornerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38914E1518951D7000D2EBC9 /* CornerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		3847ABF2187C5EA500593C09 /* HelloTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HelloTests-Info.plist"; sourceTree = "<group>"; };
 		3847ABF4187C5EA500593C09 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3847ABF6187C5EA500593C09 /* HelloTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloTests.m; sourceTree = "<group>"; };
+		38914E1418951D7000D2EBC9 /* CornerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CornerView.h; sourceTree = "<group>"; };
+		38914E1518951D7000D2EBC9 /* CornerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CornerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,8 @@
 		3847ABD1187C5EA500593C09 /* Hello */ = {
 			isa = PBXGroup;
 			children = (
+				38914E1418951D7000D2EBC9 /* CornerView.h */,
+				38914E1518951D7000D2EBC9 /* CornerView.m */,
 				3847ABDA187C5EA500593C09 /* AppDelegate.h */,
 				3847ABDB187C5EA500593C09 /* AppDelegate.m */,
 				3847ABDD187C5EA500593C09 /* Main.storyboard */,
@@ -252,6 +257,7 @@
 				3847ABE2187C5EA500593C09 /* ViewController.m in Sources */,
 				3847ABDC187C5EA500593C09 /* AppDelegate.m in Sources */,
 				3847ABD8187C5EA500593C09 /* main.m in Sources */,
+				38914E1618951D7100D2EBC9 /* CornerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +466,7 @@
 				3847ABFC187C5EA500593C09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3847ABFD187C5EA500593C09 /* Build configuration list for PBXNativeTarget "HelloTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +475,7 @@
 				3847ABFF187C5EA500593C09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
