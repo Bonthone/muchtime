@@ -11,5 +11,7 @@
 @interface CornerView : UIView
 
 @property (assign) UIColor *color;
+@property (assign) CGPoint direction;
+@property (assign) CGPoint startPosition;
 
 @end

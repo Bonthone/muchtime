@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CornerView.h"
 
 @interface ViewController : UIViewController
 
@@ -14,7 +15,7 @@
 
 @property (strong, nonatomic) IBOutlet UIView *bgView;
 @property (strong, nonatomic) IBOutlet UIImageView *dogeView;
-@property (strong, nonatomic) IBOutlet UIView *cornerView;
+@property (strong, nonatomic) IBOutlet CornerView *cornerView;
 
 
 @end

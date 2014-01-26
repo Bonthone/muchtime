@@ -53,7 +53,6 @@ CGPoint calcMovement(tx, ty) {
 - (void)handlePanFrom:(UIPanGestureRecognizer*)recognizer {
 
     CGPoint translation = [recognizer translationInView:recognizer.view];
-    CGPoint velocity = [recognizer velocityInView:recognizer.view];
 
     if (recognizer.state == UIGestureRecognizerStateBegan) {
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
