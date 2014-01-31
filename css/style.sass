@@ -1,0 +1,198 @@
+@import "../lib/css/osx"
+
+$purple: #b20038
+$pink: #fe2468
+$light-teal: #00a4a5
+$dark-teal: #005b63
+$cream: #fefee2
+$beige: #dfd3b0
+
+= vendor-prefix($name, $argument)
+  -webkit-#{$name}: #{$argument}
+  -moz-#{$name}: #{$argument}
+  #{$name}: #{$argument}
+
+.tr
+  right: 0
+.br
+  right: 0
+  bottom: 0
+.bl
+  bottom: 0
+=corner($radius)
+  .corner
+    width: $radius
+    height: $radius
+    position: absolute
+    text-indent: -9999px
+    +vendor-prefix(transform, rotate(45deg))
+
+  .corner.tl
+    background: $light-teal
+    margin-left: -$radius/2
+    margin-top: -$radius/2
+
+  .corner.tr
+    background: $pink
+    margin-right: -$radius/2
+    margin-top: -$radius/2
+
+  .corner.br
+    background: $purple
+    margin-right: -$radius/2
+    margin-bottom: -$radius/2
+    box-shadow: none
+
+  .corner.bl
+    background: $dark-teal
+    margin-left: -$radius/2
+    margin-bottom: -$radius/2
+
+.icon
+  position: absolute
+  height: 80px
+  width: 80px
+  &.br
+    background: url("/img/exit.png") no-repeat top left
+  &.bl
+    background: url("/img/hospital.png") no-repeat top right
+  &.tl
+    background: url("/img/computer.png") no-repeat bottom right
+  &.tr
+    background: url("/img/suitcase.png") no-repeat bottom left
+
+
+*
+  margin: 0
+  padding: 0
+  +vendor-prefix(box-sizing, border-box)
+
+::selection, ::-moz-selection 
+  background: transparent
+
+body
+  font-family: Helvetica Neue
+  
+#iphone
+  background: url("/img/iphone.png") no-repeat
+  width: 448px
+  height: 864px
+  margin: 0 auto
+  padding: 148px 0 0 64px
+  position: relative
+  +corner(227px)
+
+#iphone-screen
+  position: relative
+  width: 320px
+  height: 568px
+  background: $purple
+  overflow: hidden
+
+#ipad
+  background: url("/img/ipad.png") no-repeat
+  width: 988px
+  height: 1346px
+  position: relative
+  margin: 0 auto
+  padding: 113px 0 0 111px
+  margin-top: 34px
+  +corner(280px)
+
+$ipad-padding: 80px
+#ipad-screen
+  width: 768px
+  height: 1024px
+  padding: $ipad-padding
+  background: $cream
+
+nav
+  $brown: darken($beige, 50%)
+  background: $brown
+  > button
+    background: transparent
+    color: white
+    border: 0
+    padding: 5px 0
+    width: 33.333333%
+    text-transform: uppercase
+    cursor: pointer
+    &.selected, &:hover
+      background: $beige
+      color: $brown
+#mbp
+  background: url("/img/mbp.png") no-repeat
+  width: 1897px
+  height: 1091px
+  margin-top: 34px
+  margin: 0 auto
+  +corner(150px)
+
+#mbp-screen
+  width: 1440px
+  height: 900px
+  position: relative
+  top: 80px
+  margin: 0 auto
+  background: url("/img/bg.jpg") no-repeat
+  .content
+    background: $cream
+    height: 700px
+
+#mbp-track
+  width: 300px
+  height: 300px
+  background: $purple
+  position: absolute
+  right: -301px
+  top: 10px
+  border-top-left-radius: 10px
+  border-bottom-left-radius: 10px
+
+  .prevent-overflow
+    position: relative
+    overflow: hidden
+    height: 300px
+    border-top-left-radius: 10px
+    border-bottom-left-radius: 10px
+
+  .icon
+    +vendor-prefix(transform, scale(0.7))
+    height: 60px
+    width: 60px
+
+  .handle
+    width: 50px
+    height: 95px
+    position: relative
+    bottom: 198px
+    cursor: pointer
+    color: white
+    right: 40px
+    border: 0
+    text-indent: -9999px
+    border-top-left-radius: 10px
+    border-bottom-left-radius: 10px
+    background: $purple url("/img/exit_small.png") no-repeat left
+
+.content-block
+  width: 100%
+  height: 1024px/2 - 1.5 * $ipad-padding
+  margin-bottom: $ipad-padding
+  background: $beige
+  position: relative
+  overflow: hidden
+
+.content-block + .content-block
+  background: $purple
+
+.center
+  position: absolute
+  left: 50%
+  top: 50%
+  +vendor-prefix(transform, translate(-50%, -50%))
+
+  color: $cream
+  font-family: Helvetica Neue
+  font-size: 52px
+

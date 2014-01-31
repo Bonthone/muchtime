@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./lib/js/jquery-2.1.0.js"></script>
+    <script src="./lib/js/lodash.js"></script>
+    <script src="./lib/js/Bacon.js"></script>
+    <script src="./lib/js/kinetic.js"></script>
+    <script src="./js/main.js"></script>
+  </head>
+  <body>
+    <div id="iphone">
+      <div id="iphone-screen">
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner br"></div>
+        <div class="corner bl"></div>
+        <div class="icon tl"></div>
+        <div class="icon tr"></div>
+        <div class="icon br"></div>
+        <div class="icon bl"></div>
+        <div class="center">
+          01:25:08
+        </div>
+      </div>
+    </div>
+
+    <div id="ipad">
+      <div id="ipad-screen">
+        <div class="content-block"> 
+          <nav>
+            <button data-timeframe="7">Last week</button><button class="selected" data-timeframe="30">Last month</button><button data-timeframe="90">Last quarter</button>
+          </nav>
+          <div id="ipad-graph"></div>
+        </div>
+        <div class="content-block">
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner br"></div>
+        <div class="corner bl"></div>
+        <div class="icon tl"></div>
+        <div class="icon tr"></div>
+        <div class="icon br"></div>
+        <div class="icon bl"></div>
+
+        <div class="center">
+          01:25:03
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mbp">
+      <div id="mbp-screen">
+         <div class="window">
+        <h1>
+          <div class="buttons">
+            <a class="one" href="#"></a>
+            <a class="two" href="#"></a>
+            <a class="three" href="#"></a>
+          </div>
+          <span>wow</span>
+        </h1>
+        <div class="content">
+          <div id="mbp-graph"></div>
+          <div id="mbp-list">
+            <div class=""></div>
+          </div>
+          <div id="mbp-track">
+            <div class="prevent-overflow">
+              <div class="corner tl"></div>
+              <div class="corner tr"></div>
+              <div class="corner br"></div>
+              <div class="corner bl"></div>
+              <div class="icon tl"></div>
+              <div class="icon tr"></div>
+              <div class="icon br"></div>
+              <div class="icon bl"></div>
+
+              <div class="center">
+                01:25:03
+              </div>
+            </div>
+            <button class="handle">
+              Show
+            </button>
+          </div>
+        </div>
+        <div class="footer"></div>
+      </div>
+    </div>
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+  </body>
+</html>
