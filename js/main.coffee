@@ -105,6 +105,16 @@ steppedRange = (range, steps) ->
 boundedRandom = (min, max) ->
   Math.floor(Math.random() * (max - min) + min)
 
+formatTime = (timeInSeconds, showSeconds = false) ->
+  withLeadingZero = (number) ->
+    "#{if number <= 9 then 0 else ''}#{number}"
+
+  hours = withLeadingZero timeInSeconds / 3600
+  minutes = withLeadingZero (timeInSeconds % 3600) / 60
+  seconds = withLeadingZero timeInSeconds % (3600 * 60)
+
+  "#{hours}:#{minutes}:#{seconds}"
+
 $.fn.dragAndDrop = (options = {}) ->
   $el = $(this)
   $handle = if options.handle then $(options.handle)
