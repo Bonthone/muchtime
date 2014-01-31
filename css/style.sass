@@ -7,6 +7,10 @@ $dark-teal: #005b63
 $cream: #fefee2
 $beige: #dfd3b0
 
+$office: $light-teal
+$leisure: $pink
+$clinic: $dark-teal
+$housecall: $purple
 = vendor-prefix($name, $argument)
   -webkit-#{$name}: #{$argument}
   -moz-#{$name}: #{$argument}
@@ -67,6 +71,8 @@ $beige: #dfd3b0
   margin: 0
   padding: 0
   +vendor-prefix(box-sizing, border-box)
+  &:focus
+    outline: 0
 
 ::selection, ::-moz-selection 
   background: transparent
@@ -139,6 +145,40 @@ nav
   .content
     background: $cream
     height: 700px
+
+#mbp-list
+  > div
+    width: 400px
+    background: #ccc
+    min-height: 20px
+    max-height: 240px
+    color: #fff
+    button.activity
+      width: 40px
+      border: 0
+      background: transparent
+    button.delete
+      float: right
+      border: 0
+      background: transparent
+      visibility: hidden
+    &:hover button.delete
+      visibility: visible
+    .metadata
+      padding-top: 3px
+      width: 300px
+      float: right
+      > p
+        display: inline-block
+        padding-right: 30px
+  .office
+    background: $office
+  .leisure
+    background: $leisure
+  .clinic
+    background: $clinic
+  .housecall
+    background: $housecall
 
 #mbp-track
   width: 300px

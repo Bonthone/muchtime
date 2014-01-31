@@ -79,7 +79,7 @@ setupIpad = (timeframe = 30) ->
 
 setupMBP = ->
   STAGE_WIDTH = 1200 
-  STAGE_HEIGHT = 500
+  STAGE_HEIGHT = 300
 
   stage = new Kinetic.Stage
     container: "mbp-graph"
@@ -98,6 +98,11 @@ setupMBP = ->
   layer.add(graph)
   stage.add(layer)
 
+  $("#mbp-list > div").each ->
+    length = $(this).data("length")
+    $(this).css
+      height: length/120 + "px"
+    $(this).find(".elapsed").text(formatTime(length))
 
 steppedRange = (range, steps) ->
   range/steps * step for step in [0..steps]
@@ -107,11 +112,11 @@ boundedRandom = (min, max) ->
 
 formatTime = (timeInSeconds, showSeconds = false) ->
   withLeadingZero = (number) ->
-    "#{if number <= 9 then 0 else ''}#{number}"
+    "#{if number <= 9 then 0 else ''}#{Math.floor number}"
 
   hours = withLeadingZero timeInSeconds / 3600
   minutes = withLeadingZero (timeInSeconds % 3600) / 60
-  seconds = withLeadingZero timeInSeconds % (3600 * 60)
+  seconds = withLeadingZero timeInSeconds % (60)
 
   "#{hours}:#{minutes}:#{seconds}"
 
