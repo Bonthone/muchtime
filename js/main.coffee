@@ -146,7 +146,7 @@ $.fn.dragAndDrop = (options = {}) ->
     [a, b] = [t[1], t[0]]
     { x: a.x - b.x, y: a.y - b.y }
 
-  draggingDeltas = dragStart.flatMap ->
+  draggingDeltas = dragStart.flatMapLatest ->
     $("html").asEventStream("mousemove")
       .map(coords)
       .slidingWindow(2, 2)
