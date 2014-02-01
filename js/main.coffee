@@ -125,10 +125,10 @@ boundedRandom = (min, max) ->
 
 formatTime = (timeInSeconds, showSeconds = false) ->
   withLeadingZero = (number) ->
-    "#{if number <= 9 then 0 else ''}#{Math.floor number}"
+    "#{if number <= 9 then 0 else ''}#{number}"
 
-  hours = withLeadingZero timeInSeconds / 3600
-  minutes = withLeadingZero (timeInSeconds % 3600) / 60
+  hours = withLeadingZero Math.floor timeInSeconds / 3600
+  minutes = withLeadingZero Math.floor (timeInSeconds % 3600) / 60
   seconds = withLeadingZero timeInSeconds % (60)
 
   "#{hours}:#{minutes}:#{seconds}"
