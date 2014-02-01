@@ -137,7 +137,7 @@ $.fn.dragAndDrop = (options = {}) ->
   $el = $(this)
   $handle = if options.handle then $(options.handle)
   dragStart = ($handle or $el).asEventStream("mousedown")
-  dragEnd = $("html").asEventStream("mouseup")
+  dragEnd = $(window).asEventStream("mouseup")
 
   coords = (a) -> { x: a.clientX, y: a.clientY }
   add = (a, b) -> { x: a.x + b.x, y: a.y + b.y }
