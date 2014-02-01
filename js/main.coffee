@@ -41,7 +41,7 @@ $ ->
     $("#mbp-track").animate
       right: if $("#mbp-track").css("right") is "-301px" then "-1px" else "-301px"
 
-  timer.reset()
+  timer.resetTo(31337)
 
 setupIpad = (timeframe = 30) ->
   stage = new Kinetic.Stage
@@ -136,11 +136,13 @@ formatTime = (timeInSeconds, showSeconds = false) ->
 
 timer =
   currentTime: Bacon.never()
-  reset: ->
+  reset: -> this.resetTo(0)
+  resetTo: (initial) ->
     plus = (a,b) -> a + b
-    self.currentTime = Bacon.interval(1000, 1).scan(1, plus)
+    this.currentTime = Bacon.interval(1000, 1).scan(initial, plus)
 
-    self.currentTime.onValue (sec) ->
+    this.currentTime.onValue (sec) ->
+      console.log sec
       $(".timer").text(formatTime(sec, true))
 
 $.fn.dragAndDrop = (options = {}) ->
