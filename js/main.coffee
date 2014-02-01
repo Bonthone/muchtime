@@ -23,7 +23,7 @@ $ ->
     yMax: 900
 
 
-  asd = $(".corner.tl").each (i, e) ->
+  $(".corner.tl").each (i, e) ->
     corner = $(e)
     corner.clone()
     .appendTo(corner.parent())
