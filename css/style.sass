@@ -30,6 +30,7 @@ $housecall: $purple
     position: absolute
     text-indent: -9999px
     +vendor-prefix(transform, rotate(45deg))
+    z-index: 2
 
   .corner.tl
     background: $light-teal
@@ -57,6 +58,7 @@ $housecall: $purple
   position: absolute
   height: 80px
   width: 80px
+  z-index: 2
   &.br
     background: url("/img/exit.png") no-repeat top left
   &.bl

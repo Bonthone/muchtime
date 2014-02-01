@@ -22,7 +22,20 @@ $ ->
     xMax: 1440
     yMax: 900
 
-  $(".corner.tl").dragAndDrop()
+
+  asd = $(".corner.tl").each (i, e) ->
+    corner = $(e)
+    corner.clone()
+    .appendTo(corner.parent())
+    .css
+      height: '1000px'
+      width: '1000px'
+      'margin-left': '-770px'
+      'margin-top': '-770px'
+      'z-index': 1
+    .dragAndDrop()
+    corner.css
+      'pointer-events': 'none'
 
   $(".handle").click ->
     $("#mbp-track").animate
@@ -143,10 +156,13 @@ $.fn.dragAndDrop = (options = {}) ->
   position = draggingDeltas.scan({ x: options.initialX or 0, y: options.initialY or 0 }, add)
 
   position.onValue (pos) ->
-    xMin = if options.xMin? then options.xMin else -$el.offset().left
-    yMin = if options.yMin? then options.yMin else -$el.offset().top
-    xMax = if options.xMax? then options.xMax - $el.width() else window.innerWidth - $el.offset().left
-    yMax = if options.yMax? then options.yMax - $el.height() else window.innerHeight - $el.offset().top
-    $el.css
-      left: Math.min(Math.max(xMin, pos.x), xMax)
-      top: Math.min(Math.max(xMin, pos.y), yMax)
+    if options.xMin?
+      xMax = options.xMax - $el.width()
+      yMax = options.yMax - $el.height()
+      $el.css
+        left: Math.min(Math.max(options.xMin, pos.x), xMax)
+        top: Math.min(Math.max(options.yMin, pos.y), yMax)
+    else
+      $el.css
+        left: pos.x
+        top: pos.y
