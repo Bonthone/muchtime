@@ -6,6 +6,31 @@ COLORS =
   cream: "#fefee2"
   beige: "#dfd3b0"
 
+
+class ActivitiesListModel
+  mapActivities: (f) ->
+    (activities) -> _.map(activities, f)
+
+  modifyActivity: (updatedActivity) ->
+    mapActivities (activity) ->
+      if activity.id == updatedActivity.id then updatedActivity else activity
+
+  addActivity: (newActivity) ->
+    (activities) -> activities.concat [newActivity]
+
+  constructor: ->
+    @activityAdded = new Bacon.Bus()
+    @activityModified = new Bacon.Bus()
+
+    modifications =
+      @activityAdded.map(@addActivity)
+      .merge(@activityModified.map(@modifyActivity))
+
+    @activityProperty = modifications.scan(
+      [],
+      (activities, modification) -> modification(activities)
+    )
+
 $ ->
   setupIpad()
   setupMBP()
