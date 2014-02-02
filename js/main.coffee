@@ -54,7 +54,7 @@ setupIpad = (timeframe = 30) ->
   ys = _.map(Array(timeframe+1), -> boundedRandom(100, 200))
   graph = new Kinetic.Line
     points: _.flatten(_.zip(xs, ys))
-    stroke: "#00a4a5"
+    stroke: COLORS.lightTeal
     strokeWidth: 5
 
   clientRatePerDay = 3.623
@@ -92,16 +92,17 @@ setupIpad = (timeframe = 30) ->
   stage.add(layer)
 
 setupMBP = ->
-  STAGE_WIDTH = 1200 
+  STAGE_WIDTH = 1100 
   STAGE_HEIGHT = 300
 
   stage = new Kinetic.Stage
     container: "mbp-graph"
     width: STAGE_WIDTH
-    height: STAGE_HEIGHT 
+    height: STAGE_HEIGHT
+
   layer = new Kinetic.Layer()
   
-  steps = 30
+  steps = 100
   xs = steppedRange(STAGE_WIDTH, steps)
   ys = _.map(Array(steps+1), -> boundedRandom(100, 200))
   graph = new Kinetic.Line
@@ -109,8 +110,81 @@ setupMBP = ->
     stroke: "#00a4a5"
     strokeWidth: 5
 
+
+  selection = new Kinetic.Rect
+    x: 400
+    y: 50
+    width: 100
+    height: 200
+    stroke: "black"
+    dash: [5, 5]
+    draggable: true
+    fill: "rgba(0, 0, 0, 0.2)"
+    dragBoundFunc: (pos) ->
+      x: pos.x
+      y: @getAbsolutePosition().y
+
   layer.add(graph)
+  layer.add(selection)
   stage.add(layer)
+
+  stage2 = new Kinetic.Stage
+    container: "mbp-stats"
+    width: 650
+    height: 145 
+  layer2 = new Kinetic.Layer()
+
+  wedge = new Kinetic.Wedge
+    x: stage2.width() - 75
+    y: stage2.height() / 2
+    radius: 70
+    angle: 60
+    fill: "#00a4a5"
+    rotation: -120
+
+  wedge2 = wedge.clone
+    rotation: -60
+    angle: 129
+    fill: COLORS.pink
+
+  wedge3 = wedge.clone
+    rotation: 69
+    angle: 103 
+    fill: COLORS.purple
+
+  wedge4 = wedge.clone
+    rotation: 172
+    angle: 68
+    fill: COLORS.darkTeal
+
+  text = new Kinetic.Text
+    x: 0
+    y: 15
+    text: "306\nhours"
+    fill: COLORS.lightTeal
+    fontSize: 40
+    fontFamily: "Helvetica Neue"
+    align: "center"
+
+  text2 = text.clone
+    x: 150
+    text: "147\nkm"
+    fill: COLORS.pink
+
+  text3 = text.clone
+    x: 270
+    text: "240\nclients"
+    fill: COLORS.darkTeal
+
+  layer2.add(wedge)
+  layer2.add(wedge2)
+  layer2.add(wedge3)
+  layer2.add(wedge4)
+  layer2.add(text)
+  layer2.add(text2)
+  layer2.add(text3)
+  stage2.add(layer2)
+
 
   $("#mbp-list > div").each ->
     length = $(this).data("length")
