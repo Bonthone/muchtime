@@ -117,8 +117,8 @@ $ ->
 setupIpad = (timeframe = 30) ->
   stage = new Kinetic.Stage
     container: "ipad-graph"
-    width: 608 
-    height: 392 
+    width: 608
+    height: 392
   layer = new Kinetic.Layer()
 
   xs = steppedRange(608, timeframe)
@@ -163,7 +163,7 @@ setupIpad = (timeframe = 30) ->
   stage.add(layer)
 
 setupMBP = ->
-  STAGE_WIDTH = 1100 
+  STAGE_WIDTH = 1100
   STAGE_HEIGHT = 300
 
   stage = new Kinetic.Stage
@@ -172,7 +172,7 @@ setupMBP = ->
     height: STAGE_HEIGHT
 
   layer = new Kinetic.Layer()
-  
+
   steps = 100
   xs = steppedRange(STAGE_WIDTH, steps)
   ys = _.map(Array(steps+1), -> boundedRandom(100, 200))
@@ -202,7 +202,7 @@ setupMBP = ->
   stage2 = new Kinetic.Stage
     container: "mbp-stats"
     width: 650
-    height: 145 
+    height: 145
   layer2 = new Kinetic.Layer()
 
   wedge = new Kinetic.Wedge
@@ -220,7 +220,7 @@ setupMBP = ->
 
   wedge3 = wedge.clone
     rotation: 69
-    angle: 103 
+    angle: 103
     fill: COLORS.purple
 
   wedge4 = wedge.clone
@@ -258,7 +258,7 @@ setupMBP = ->
 
 steppedRange = (range, steps) ->
   range/steps * step for step in [0..steps]
-  
+
 boundedRandom = (min, max) ->
   Math.floor(Math.random() * (max - min) + min)
 
