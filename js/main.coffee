@@ -73,10 +73,6 @@ $ ->
     $corner
       .appendTo(corner.parent())
       .css
-        height: '1000px'
-        width: '1000px'
-        'margin-left': '-770px'
-        'margin-top': '-770px'
         'z-index': 1
 
     corner.css

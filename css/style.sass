@@ -23,7 +23,7 @@ $housecall: $purple
   bottom: 0
 .bl
   bottom: 0
-=corner($radius)
+=corner($radius, $margin)
   .corner
     width: $radius
     height: $radius
@@ -34,24 +34,24 @@ $housecall: $purple
 
   .corner.tl
     background: $light-teal
-    margin-left: -$radius/2
-    margin-top: -$radius/2
+    margin-left: -$margin
+    margin-top: -$margin
 
   .corner.tr
     background: $pink
-    margin-right: -$radius/2
-    margin-top: -$radius/2
+    margin-right: -$margin
+    margin-top: -$margin
 
   .corner.br
     background: $purple
-    margin-right: -$radius/2
-    margin-bottom: -$radius/2
+    margin-right: -$margin
+    margin-bottom: -$margin
     box-shadow: none
 
   .corner.bl
     background: $dark-teal
-    margin-left: -$radius/2
-    margin-bottom: -$radius/2
+    margin-left: -$margin
+    margin-bottom: -$margin
 
 .icon.large
   pointer-events: none
@@ -92,7 +92,7 @@ body
   margin: 0 auto
   padding: 148px 0 0 64px
   position: relative
-  +corner(227px)
+  +corner(1000px, 770px)
 
 #iphone-screen
   position: relative
@@ -109,7 +109,7 @@ body
   margin: 0 auto
   padding: 113px 0 0 111px
   margin-top: 34px
-  +corner(280px)
+  +corner(1000px, 770px)
 
 $ipad-padding: 80px
 #ipad-screen
@@ -138,7 +138,6 @@ nav
   height: 1091px
   margin-top: 34px
   margin: 0 auto
-  +corner(150px)
 
 #mbp-screen
   width: 1440px
@@ -205,6 +204,7 @@ nav
   top: 10px
   border-top-left-radius: 10px
   border-bottom-left-radius: 10px
+  +corner(1000px, 790px)
 
   .prevent-overflow
     position: relative
