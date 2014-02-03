@@ -53,20 +53,20 @@ $housecall: $purple
     margin-left: -$radius/2
     margin-bottom: -$radius/2
 
-.icon
+.icon.large
   pointer-events: none
   position: absolute
   height: 80px
   width: 80px
   z-index: 2
   &.br
-    background: url("/img/exit.png") no-repeat top left
+    background: url("/img/leisure.png") no-repeat top left
   &.bl
-    background: url("/img/hospital.png") no-repeat top right
+    background: url("/img/clinic.png") no-repeat top right
   &.tl
-    background: url("/img/computer.png") no-repeat bottom right
+    background: url("/img/office.png") no-repeat bottom right
   &.tr
-    background: url("/img/suitcase.png") no-repeat bottom left
+    background: url("/img/housecall.png") no-repeat bottom left
 
 
 *
@@ -169,7 +169,7 @@ nav
     min-height: 20px
     max-height: 240px
     color: #fff
-    button.activity
+    button.icon
       width: 40px
       border: 0
       background: transparent

@@ -11,7 +11,7 @@
 
     <script id="activity-template" type="text/x-handlebars-template">
       <div class="{{type}}">
-        <button class="activity"><img src="./img/computer.png" height="20" /></button>
+        <button class="icon"><img src="./img/{{type}}.png" height="20" /></button>
         <button class="delete"><img src="./img/trash.svg" height="18" /></button>
         <div class="metadata">
           <p class="time"><span class="start-time">{{start}}</span> - <span class="end-time">{{end}}</span></p>
@@ -27,10 +27,10 @@
         <div class="corner tr"></div>
         <div class="corner br"></div>
         <div class="corner bl"></div>
-        <div class="icon tl"></div>
-        <div class="icon tr"></div>
-        <div class="icon br"></div>
-        <div class="icon bl"></div>
+        <div class="icon large tl"></div>
+        <div class="icon large tr"></div>
+        <div class="icon large br"></div>
+        <div class="icon large bl"></div>
         <div class="timer center">
           01:25:08
         </div>
@@ -50,10 +50,10 @@
         <div class="corner tr"></div>
         <div class="corner br"></div>
         <div class="corner bl"></div>
-        <div class="icon tl"></div>
-        <div class="icon tr"></div>
-        <div class="icon br"></div>
-        <div class="icon bl"></div>
+        <div class="icon large tl"></div>
+        <div class="icon large tr"></div>
+        <div class="icon large br"></div>
+        <div class="icon large bl"></div>
 
         <div class="timer center">
           01:25:03
@@ -77,7 +77,7 @@
           <div id="mbp-graph"></div>
           <div id="mbp-list">
             <div class="office" data-length="300">
-              <button class="activity"><img src="./img/computer.png" height="20" /></button>
+              <button class="activity"><img src="./img/office.png" height="20" /></button>
               <button class="delete"><img src="./img/trash.svg" height="18" /></button>
               <div class="metadata">
                 <p class="time"><span class="start-time">13:45</span> - <span class="end-time">13:50</span></p>
@@ -85,7 +85,7 @@
               </div>
             </div>
             <div class="leisure" data-length="1548">
-              <button class="activity"><img src="./img/exit.png" height="20" /></button>
+              <button class="activity"><img src="./img/leisure.png" height="20" /></button>
               <button class="delete"><img src="./img/trash.svg" height="18" /></button>
               <div class="metadata">
                 <p class="time"><span class="start-time">13:50</span> - <span class="end-time">14:15</span></p>
@@ -93,7 +93,7 @@
               </div>
             </div>
             <div class="clinic" data-length="7200">
-              <button class="activity"><img src="./img/hospital.png" height="20" /></button>
+              <button class="activity"><img src="./img/clinic.png" height="20" /></button>
               <button class="delete"><img src="./img/trash.svg" height="18" /></button>
               <div class="metadata">
                 <p class="time"><span class="start-time">14:15</span> - <span class="end-time">16:15</span></p>
@@ -101,7 +101,7 @@
               </div>
             </div>
             <div class="housecall" data-length="1800">
-              <button class="activity"><img src="./img/suitcase.png" height="20" /></button>
+              <button class="activity"><img src="./img/housecall.png" height="20" /></button>
               <button class="delete"><img src="./img/trash.svg" height="18" /></button>
               <div class="metadata">
                 <p class="time"><span class="start-time">16:15</span> - <span class="end-time">16:45</span></p>
@@ -115,10 +115,10 @@
               <div class="corner tr"></div>
               <div class="corner br"></div>
               <div class="corner bl"></div>
-              <div class="icon tl"></div>
-              <div class="icon tr"></div>
-              <div class="icon br"></div>
-              <div class="icon bl"></div>
+              <div class="icon large tl"></div>
+              <div class="icon large tr"></div>
+              <div class="icon large br"></div>
+              <div class="icon large bl"></div>
 
               <div class="timer center">
                 01:25:03
