@@ -89,10 +89,10 @@ $ ->
       delta = getDelta([start, finish])
       threshold = 70
       if delta.x > 0 and delta.y > 0 and (delta.x > threshold or delta.y > threshold)
-        movement.push getDelta([$corner.currentPosition(), {x: 300, y: 300}])
+        movement.plug animateCoordinates($corner.currentPosition(), {x: 300, y: 300})
         User.timer.reset()
       else
-        movement.push getDelta([$corner.currentPosition(), {x: 0, y: 0}])
+        movement.plug animateCoordinates($corner.currentPosition(), {x: 0, y: 0}, 0.2)
 
     position = movement.scan({ x: 0, y: 0 }, add)
     position.onValue (pos) ->
@@ -303,6 +303,15 @@ add = (a, b) -> { x: a.x + b.x, y: a.y + b.y }
 getDelta = (t) ->
   [a, b] = [t[1], t[0]]
   { x: a.x - b.x, y: a.y - b.y }
+
+animateCoordinates = (start, end, seconds = 0.4, fps = 30) ->
+  coordSteps = (start, end, steps) ->
+    _.times(steps, (n) ->
+      x: (end.x - start.x) / steps
+      y: (end.y - start.y) / steps
+    )
+
+  Bacon.sequentially(1000.0 / fps, coordSteps(start, end, Math.ceil(fps * seconds)))
 
 dragEnd = $(window).asEventStream("mouseup")
 
