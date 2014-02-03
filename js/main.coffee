@@ -94,6 +94,26 @@ $ ->
 
     User.timer.reset
 
+  initial = [
+    type: 'leisure'
+    length: 1548
+    elapsed: formatTime(1548)
+  ,
+    type: 'clinic'
+    length: 7200
+    elapsed: formatTime(7200)
+  ,
+    type: 'housecall'
+    length: 1800
+    elapsed: formatTime(1800)
+  ,
+    type: 'office'
+    length: 300
+    elapsed: formatTime(300)
+  ]
+
+  _.each(initial, (activity) -> User.activitiesList.activityAdded.push(activity))
+
 setupIpad = (timeframe = 30) ->
   stage = new Kinetic.Stage
     container: "ipad-graph"
