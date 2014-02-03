@@ -63,17 +63,41 @@ $ ->
 
   $(".corner.tl").each (i, e) ->
     corner = $(e)
-    corner.clone()
-    .appendTo(corner.parent())
-    .css
-      height: '1000px'
-      width: '1000px'
-      'margin-left': '-770px'
-      'margin-top': '-770px'
-      'z-index': 1
-    .dragAndDrop()
+    $corner = corner.clone()
+
+    $corner
+      .appendTo(corner.parent())
+      .css
+        height: '1000px'
+        width: '1000px'
+        'margin-left': '-770px'
+        'margin-top': '-770px'
+        'z-index': 1
+
     corner.css
       'pointer-events': 'none'
+
+    movement = new Bacon.Bus()
+    movement.plug($corner.draggingDeltas())
+
+    completedDrags = $corner.dragStart().flatMapLatest (a) ->
+      dragEnd.map (b) ->
+        [coords(a),coords(b)]
+
+    completedDrags.onValues (start, finish) ->
+      delta = getDelta([start, finish])
+      threshold = 70
+      if delta.x > 0 and delta.y > 0 and (delta.x > threshold or delta.y > threshold)
+        movement.push getDelta([$corner.currentPosition(), {x: 300, y: 300}])
+      else
+        movement.push getDelta([$corner.currentPosition(), {x: 0, y: 0}])
+
+    position = movement.scan({ x: 0, y: 0 }, add)
+    position.onValue (pos) ->
+      $corner.css
+        left: pos.x
+        top: pos.y
+
 
   $(".handle").click ->
     $("#mbp-track").animate
@@ -272,25 +296,35 @@ formatTime = (timeInSeconds, showSeconds = false) ->
 
   "#{hours}:#{minutes}:#{seconds}"
 
-$.fn.dragAndDrop = (options = {}) ->
-  $el = $(this)
+coords = (a) -> { x: a.clientX, y: a.clientY }
+add = (a, b) -> { x: a.x + b.x, y: a.y + b.y }
+
+getDelta = (t) ->
+  [a, b] = [t[1], t[0]]
+  { x: a.x - b.x, y: a.y - b.y }
+
+dragEnd = $(window).asEventStream("mouseup")
+
+$.fn.currentPosition = ->
+  x: _.parseInt($(this).css('left'))
+  y: _.parseInt($(this).css('top'))
+
+$.fn.dragStart = (options = {}) ->
   $handle = if options.handle then $(options.handle)
-  dragStart = ($handle or $el).asEventStream("mousedown")
-  dragEnd = $(window).asEventStream("mouseup")
+  ($handle or $(this)).asEventStream("mousedown")
 
-  coords = (a) -> { x: a.clientX, y: a.clientY }
-  add = (a, b) -> { x: a.x + b.x, y: a.y + b.y }
-
-  getDelta = (t) ->
-    [a, b] = [t[1], t[0]]
-    { x: a.x - b.x, y: a.y - b.y }
-
-  draggingDeltas = dragStart.flatMapLatest ->
+$.fn.draggingDeltas = (options = {}) ->
+  $(this).dragStart(options).flatMapLatest ->
     $("html").asEventStream("mousemove")
       .map(coords)
       .slidingWindow(2, 2)
       .map(getDelta)
       .takeUntil(dragEnd)
+
+
+$.fn.dragAndDrop = (options = {}) ->
+  $el = $(this)
+  draggingDeltas = $el.draggingDeltas(options)
 
   position = draggingDeltas.scan({ x: options.initialX or 0, y: options.initialY or 0 }, add)
 
