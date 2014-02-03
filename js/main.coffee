@@ -81,6 +81,19 @@ $ ->
 
   User.timer.resetTo(31337)
 
+  activityTemplate = Handlebars.compile($("#activity-template").html());
+
+  User.activitiesList.activityProperty.onValue (activities) ->
+    $list = $("#mbp-list").empty()
+    activities.map (activity) ->
+      $el = $(activityTemplate(activity))
+      $el.css
+        height: activity.length / 120 + "px"
+      $el
+    .map (el) -> $list.prepend(el)
+
+    User.timer.reset
+
 setupIpad = (timeframe = 30) ->
   stage = new Kinetic.Stage
     container: "ipad-graph"
@@ -222,13 +235,6 @@ setupMBP = ->
   layer2.add(text2)
   layer2.add(text3)
   stage2.add(layer2)
-
-
-  $("#mbp-list > div").each ->
-    length = $(this).data("length")
-    $(this).css
-      height: length/120 + "px"
-    $(this).find(".elapsed").text(formatTime(length))
 
 steppedRange = (range, steps) ->
   range/steps * step for step in [0..steps]

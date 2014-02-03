@@ -6,7 +6,19 @@
     <script src="./lib/js/lodash.js"></script>
     <script src="./lib/js/Bacon.js"></script>
     <script src="./lib/js/kinetic.js"></script>
+    <script src="./lib/js/handlebars-v1.3.0.js"></script>
     <script src="./js/main.js"></script>
+
+    <script id="activity-template" type="text/x-handlebars-template">
+      <div class="{{type}}">
+        <button class="activity"><img src="./img/computer.png" height="20" /></button>
+        <button class="delete"><img src="./img/trash.svg" height="18" /></button>
+        <div class="metadata">
+          <p class="time"><span class="start-time">{{start}}</span> - <span class="end-time">{{end}}</span></p>
+          <p class="elapsed">{{elapsed}}</p>
+        </div>
+      </div>
+    </script>
   </head>
   <body>
     <div id="iphone">
