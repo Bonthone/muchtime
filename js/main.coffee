@@ -6,6 +6,10 @@ COLORS =
   cream: "#fefee2"
   beige: "#dfd3b0"
 
+class Activity
+  constructor: (@type, @seconds) ->
+    @elapsed = formatTime(@seconds)
+
 
 class ActivitiesListModel
   mapActivities: (f) ->
@@ -119,23 +123,19 @@ $ ->
     .map (el) -> $list.prepend(el)
 
 
-  initial = [
+  initial = _.map [
     type: 'leisure'
     length: 1548
-    elapsed: formatTime(1548)
   ,
     type: 'clinic'
     length: 7200
-    elapsed: formatTime(7200)
   ,
     type: 'housecall'
     length: 1800
-    elapsed: formatTime(1800)
   ,
     type: 'office'
     length: 300
-    elapsed: formatTime(300)
-  ]
+  ], (a) -> Activity(a.type, a.length)
 
   _.each(initial, (activity) -> User.activitiesList.activityAdded.push(activity))
 
