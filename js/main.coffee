@@ -31,18 +31,21 @@ class ActivitiesListModel
       (activities, modification) -> modification(activities)
     )
 
+class Timer
+  constructor: ->
+    @currentTime = new Bacon.Bus()
+    @unplugPrevious = ->
+  reset: -> @resetTo(0)
+  resetTo: (initial) ->
+    plus = (a,b) -> a + b
+    @unplugPrevious()
+    @unplugPrevious = @currentTime.plug(
+      Bacon.interval(1000, 1).scan(initial, plus)
+    )
 
 User =
   activitiesList: new ActivitiesListModel
-  timer:
-    currentTime: Bacon.never()
-    reset: -> this.resetTo(0)
-    resetTo: (initial) ->
-      plus = (a,b) -> a + b
-      @currentTime = Bacon.interval(1000, 1).scan(initial, plus)
-
-      @currentTime.onValue (sec) ->
-        $(".timer").text(formatTime(sec, true))
+  timer: new Timer
 
 $ ->
   setupIpad()
@@ -60,6 +63,8 @@ $ ->
     xMax: 1440
     yMax: 900
 
+  User.timer.currentTime.onValue (sec) ->
+    $(".timer").text(formatTime(sec, true))
 
   $(".corner.tl").each (i, e) ->
     corner = $(e)
@@ -89,6 +94,7 @@ $ ->
       threshold = 70
       if delta.x > 0 and delta.y > 0 and (delta.x > threshold or delta.y > threshold)
         movement.push getDelta([$corner.currentPosition(), {x: 300, y: 300}])
+        User.timer.reset()
       else
         movement.push getDelta([$corner.currentPosition(), {x: 0, y: 0}])
 
@@ -116,7 +122,6 @@ $ ->
       $el
     .map (el) -> $list.prepend(el)
 
-    User.timer.reset
 
   initial = [
     type: 'leisure'
